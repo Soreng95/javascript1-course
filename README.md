@@ -1,1 +1,1 @@
-# semester_project
+This is the Javascript 1 project
