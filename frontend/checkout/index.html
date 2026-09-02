@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | Rainy Days</title>
+    <meta
+      name="description"
+      content="Explore durable rain jackets for men and women at Rainy Days. Your checkout experience is smooth and secure. This is a unique description for the checkout page."
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-mobile" arias-label="Mobile navigation">
+        <input class="nav-mobile__toggle" type="checkbox" id="nav-toggle" />
+
+        <div class="container nav-mobile__top">
+          <label
+            class="nav-mobile__btn"
+            for="nav-toggle"
+            aria-label="Toggle menu"
+          >
+            <span class="nav-mobile__bar"></span>
+            <span class="nav-mobile__bar"></span>
+            <span class="nav-mobile__bar"></span>
+          </label>
+
+          <a
+            href="index.html"
+            class="nav-mobile__logo-link"
+            aria-label="Rainy Days home"
+          >
+            <img
+              class="nav-mobile__logo"
+              src="../assets/images/logo/RainyDays_Logo_SecondaryColor.png"
+              alt="Rainy Days logo"
+            />
+          </a>
+        </div>
+
+        <div class="nav-mobile__overlay">
+          <div class="nav-mobile__panel" role="dialog" aria-label="Menu">
+            <div class="nav-mobile__panel-inner">
+              <div class="nav-mobile__links">
+                <a
+                  class="nav-mobile__link nav-mobile__link--active"
+                  href="index.html"
+                  >Home</a
+                >
+                <a class="nav-mobile__link" href="products/index.html"
+                  >Shop All</a
+                >
+                <a class="nav-mobile__link" href="products/index.html">Men</a>
+                <a class="nav-mobile__link" href="products/index.html">Women</a>
+                <a class="nav-mobile__link" href="products/index.html"
+                  >New Arrivals</a
+                >
+                <a class="nav-mobile__link" href="coming-soon/index.html"
+                  >About Us</a
+                >
+                <a class="nav-mobile__link" href="coming-soon/index.html"
+                  >Contact</a
+                >
+                <a class="nav-mobile__link" href="coming-soon/index.html"
+                  >Search</a
+                >
+                <a class="nav-mobile__link" href="cart/index.html">Cart</a>
+              </div>
+            </div>
+          </div>
+
+          <label
+            class="nav-mobile__backdrop"
+            for="nav-toggle"
+            aria-label="Close menu"
+          ></label>
+        </div>
+      </nav>
+
+      <nav class="nav-desktop" aria-label="Desktop navigation">
+        <div class="container nav-desktop__inner">
+          <div
+            class="nav-desktop__group nav-desktop__group--left"
+            aria-label="Primary categories"
+          >
+            <a class="nav-link" href="products/index.html">Shop All</a>
+            <a class="nav-link" href="products/index.html">Men</a>
+            <a class="nav-link" href="products/index.html">Women</a>
+          </div>
+
+          <a
+            href="index.html"
+            class="nav-desktop__logo-link"
+            aria-label="Rainy Days home"
+          >
+            <img
+              class="nav-desktop__logo-image"
+              src="../assets/images/logo/RainyDays_Logo_SecondaryColor.png"
+              alt="Rainy Days logo"
+            />
+          </a>
+
+          <div class="nav-desktop__group nav-desktop__group--right">
+            <div class="nav-desktop__links" aria-label="Company links">
+              <a class="nav-link" href="products/index.html">New Arrivals</a>
+              <a class="nav-link" href="coming-soon/index.html">About Us</a>
+              <a class="nav-link" href="coming-soon/index.html">Contact</a>
+            </div>
+
+            <div class="nav-desktop__icons" aria-label="Actions">
+              <a
+                class="icon-btn"
+                href="coming-soon/index.html"
+                aria-label="Search"
+                >Search</a
+              >
+              <a class="icon-btn" href="cart/index.html" aria-label="Cart"
+                >Cart</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="checkout-page">
+        <div class="container checkout-page__layout">
+          <article class="checkout-form">
+            <a
+              href="../cart-page/index.html"
+              class="checkout-page__back"
+              aria-label="Go back"
+            >
+              ←
+            </a>
+
+            <form class="checkout-form__content">
+              <div class="checkout-form__group">
+                <h1 class="checkout-form__title">Contact</h1>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  class="checkout-form__input"
+                />
+              </div>
+
+              <div class="checkout-form__group">
+                <h2 class="checkout-form__title">Delivery</h2>
+
+                <div class="checkout-form__row">
+                  <input
+                    type="text"
+                    name="first-name"
+                    placeholder="Name"
+                    class="checkout-form__input"
+                  />
+                  <input
+                    type="text"
+                    name="last-name"
+                    placeholder="Last Name"
+                    class="checkout-form__input"
+                  />
+                </div>
+
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  class="checkout-form__input"
+                />
+
+                <div class="checkout-form__row">
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                    class="checkout-form__input"
+                  />
+                  <input
+                    type="text"
+                    name="post-code"
+                    placeholder="Post Code"
+                    class="checkout-form__input"
+                  />
+                </div>
+              </div>
+
+              <div class="checkout-form__group">
+                <h2 class="checkout-form__title">Payment</h2>
+
+                <input
+                  type="text"
+                  name="card-number"
+                  placeholder="Card number"
+                  class="checkout-form__input"
+                />
+
+                <div class="checkout-form__row">
+                  <input
+                    type="text"
+                    name="expiry"
+                    placeholder="MM/YYYY"
+                    class="checkout-form__input"
+                  />
+                  <input
+                    type="text"
+                    name="ccv"
+                    placeholder="CCV"
+                    class="checkout-form__input"
+                  />
+                </div>
+
+                <input
+                  type="text"
+                  name="name-on-card"
+                  placeholder="Name on card"
+                  class="checkout-form__input"
+                />
+              </div>
+            </form>
+          </article>
+
+          <article class="checkout-summary">
+            <div class="checkout-summary__header">
+              <div class="checkout-summary__title-wrap">
+                <h2 class="checkout-summary__title">Your Cart</h2>
+              </div>
+
+              <a
+                href="../products/index.html"
+                class="checkout-summary__close"
+                aria-label="Close checkout"
+              >
+                ×
+              </a>
+            </div>
+
+            <div class="checkout-list">
+              <article class="checkout-item">
+                <img
+                  src="../assets/images/jackets/RainyDays_Jacket1.jpg"
+                  alt="Polar Mist jacket"
+                  class="checkout-item__image"
+                />
+
+                <div class="checkout-item__content">
+                  <div class="checkout-item__top">
+                    <div>
+                      <h3 class="checkout-item__title">Polar Mist</h3>
+                      <p class="checkout-item__meta">Size / Colour</p>
+                      <p class="checkout-item__price">1 499,-</p>
+                    </div>
+
+                    <div class="checkout-item__quantity">
+                      <a
+                        href="#"
+                        class="checkout-item__qty-btn"
+                        aria-label="Decrease quantity"
+                        >−</a
+                      >
+                      <span class="checkout-item__qty-value">1</span>
+                      <a
+                        href="#"
+                        class="checkout-item__qty-btn"
+                        aria-label="Increase quantity"
+                        >+</a
+                      >
+                    </div>
+                  </div>
+
+                  <p class="checkout-item__sku">SKU: RA7100/003443/235</p>
+                </div>
+              </article>
+
+              <article class="checkout-item">
+                <img
+                  src="../assets/images/jackets/RainyDays_Jacket3.jpg"
+                  alt="Graphite Storm jacket"
+                  class="checkout-item__image"
+                />
+
+                <div class="checkout-item__content">
+                  <div class="checkout-item__top">
+                    <div>
+                      <h3 class="checkout-item__title">Graphite Storm</h3>
+                      <p class="checkout-item__meta">Size / Colour</p>
+                      <p class="checkout-item__price">1 299,-</p>
+                    </div>
+
+                    <div class="checkout-item__quantity">
+                      <a
+                        href="#"
+                        class="checkout-item__qty-btn"
+                        aria-label="Decrease quantity"
+                        >−</a
+                      >
+                      <span class="checkout-item__qty-value">1</span>
+                      <a
+                        href="#"
+                        class="checkout-item__qty-btn"
+                        aria-label="Increase quantity"
+                        >+</a
+                      >
+                    </div>
+                  </div>
+
+                  <p class="checkout-item__sku">SKU: RA7100/003443/235</p>
+                </div>
+              </article>
+
+              <article class="checkout-item">
+                <img
+                  src="../assets/images/jackets/RainyDays_Jacket5.jpg"
+                  alt="Titan Expeditio jacket"
+                  class="checkout-item__image"
+                />
+
+                <div class="checkout-item__content">
+                  <div class="checkout-item__top">
+                    <div>
+                      <h3 class="checkout-item__title">Titan Expeditio</h3>
+                      <p class="checkout-item__meta">Size / Colour</p>
+                      <p class="checkout-item__price">1 599,-</p>
+                    </div>
+
+                    <div class="checkout-item__quantity">
+                      <a
+                        href="#"
+                        class="checkout-item__qty-btn"
+                        aria-label="Decrease quantity"
+                        >−</a
+                      >
+                      <span class="checkout-item__qty-value">1</span>
+                      <a
+                        href="#"
+                        class="checkout-item__qty-btn"
+                        aria-label="Increase quantity"
+                        >+</a
+                      >
+                    </div>
+                  </div>
+
+                  <p class="checkout-item__sku">SKU: RA7100/003443/235</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="checkout-totals">
+              <div class="checkout-totals__row">
+                <span>Subtotal</span>
+                <span>4 397,00 NOK</span>
+              </div>
+
+              <div class="checkout-totals__row">
+                <span>Shipping</span>
+                <span>99,00 NOK</span>
+              </div>
+
+              <div class="checkout-totals__row checkout-totals__row--total">
+                <span>Total</span>
+                <span>4 496,00 NOK</span>
+              </div>
+            </div>
+
+            <a
+              href="../success/[slug]/index.html"
+              class="checkout-summary__pay-button"
+            >
+              Pay now
+            </a>
+
+            <a
+              href="../products/index.html"
+              class="checkout-summary__cancel-button"
+            >
+              Cancel
+            </a>
+
+            <a
+              href="../products/index.html"
+              class="checkout-summary__continue-link"
+            >
+              Continue Shopping
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="product-gallery">
+        <div class="container">
+          <h1 class="you-may-like">You may like</h1>
+          <div class="product-gallery__grid">
+            <article class="product-gallery__card">
+              <a href="../products/index.html" class="product-gallery__link">
+                <img
+                  src="../assets/images/jacketOnPeople/pexels-mauroignaciotorres-17052555.jpg"
+                  alt="Sesert Wind jacket"
+                  class="product-gallery__image"
+                />
+
+                <div class="product-card-info">
+                  <div class="product-card-info__left">
+                    <p class="product-card-info__title">Sesert Wind</p>
+                    <p class="product-card-info__price">1 499,-</p>
+                  </div>
+
+                  <div class="product-card-info__right">
+                    <p class="product-card-info__sizes">S M L XL</p>
+                    <div class="product-card-info__colors">
+                      <span class="color color--red"></span>
+                      <span class="color color--gray"></span>
+                      <span class="color color--orange"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+
+            <article class="product-gallery__card">
+              <a href="../products/index.html" class="product-gallery__link">
+                <img
+                  src="../assets/images/jacketOnPeople/pexels-infected-store-1913417375-28758134.jpg"
+                  alt="Arctic Light Shell jacket"
+                  class="product-gallery__image"
+                />
+
+                <div class="product-card-info">
+                  <div class="product-card-info__left">
+                    <p class="product-card-info__title">Arctic Light Shell</p>
+                    <p class="product-card-info__price">1 299,-</p>
+                  </div>
+
+                  <div class="product-card-info__right">
+                    <p class="product-card-info__sizes">S M L XL</p>
+                    <div class="product-card-info__colors">
+                      <span class="color color--red"></span>
+                      <span class="color color--gray"></span>
+                      <span class="color color--orange"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+            <article class="product-gallery__card">
+              <a href="../products/index.html" class="product-gallery__link">
+                <img
+                  src="../assets/images/jacketOnPeople/pexels-joey-cede-2152653963-35900422.jpg"
+                  alt="Midnight Summit jacket"
+                  class="product-gallery__image"
+                />
+
+                <div class="product-card-info">
+                  <div class="product-card-info__left">
+                    <p class="product-card-info__title">Midnight Summit</p>
+                    <p class="product-card-info__price">1 299,-</p>
+                  </div>
+
+                  <div class="product-card-info__right">
+                    <p class="product-card-info__sizes">S M L XL</p>
+                    <div class="product-card-info__colors">
+                      <span class="color color--red"></span>
+                      <span class="color color--gray"></span>
+                      <span class="color color--orange"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+            <article class="product-gallery__card">
+              <a href="../products/index.html" class="product-gallery__link">
+                <img
+                  src="../assets/images/jacketOnPeople/pexels-infected-store-1913417375-28758137.jpg"
+                  alt="Sesert Wind jacket"
+                  class="product-gallery__image"
+                />
+
+                <div class="product-card-info">
+                  <div class="product-card-info__left">
+                    <p class="product-card-info__title">Arctic Light Shell</p>
+                    <p class="product-card-info__price">1 299,-</p>
+                  </div>
+
+                  <div class="product-card-info__right">
+                    <p class="product-card-info__sizes">S M L XL</p>
+                    <div class="product-card-info__colors">
+                      <span class="color color--red"></span>
+                      <span class="color color--gray"></span>
+                      <span class="color color--orange"></span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-highlights">
+        <div class="container">
+          <div class="service-highlights__grid">
+            <article class="service-card">
+              <span class="service-card__icon">
+                <img src="../assets/icons/box.png" alt="Fast Shipping" />
+              </span>
+              <p class="service-card__text">Fast Shipping</p>
+            </article>
+
+            <article class="service-card">
+              <span class="service-card__icon">
+                <img
+                  src="../assets/icons/shield-check.png"
+                  alt="5 Year Guarantee"
+                />
+              </span>
+              <p class="service-card__text">5 Year Guarantee</p>
+            </article>
+
+            <article class="service-card">
+              <span class="service-card__icon">
+                <img
+                  src="../assets/icons/recycle.png"
+                  alt="Recycled Material"
+                />
+              </span>
+              <p class="service-card__text">Recycled Material</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__inner">
+        <nav class="footer__links footer__links--top">
+          <a href="../coming-soon/index.html">About Us</a>
+          <a href="../coming-soon/index.html">Contact</a>
+          <a href="../coming-soon/index.html">FAQ</a>
+        </nav>
+
+        <div class="footer__brand">
+          <img
+            src="../assets/images/logo/RainyDays_Logo_SecondaryColor.png"
+            alt="Rainy Days logo"
+            class="footer__logo"
+          />
+          <p class="footer__tagline">
+            For the Rainy days and<br />
+            every other
+          </p>
+        </div>
+
+        <nav class="footer__links footer__links--bottom">
+          <a href="../coming-soon/index.html">T&amp;C</a>
+          <a href="../coming-soon/index.html">Shipping</a>
+          <a href="../coming-soon/index.html">Our Quality</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
