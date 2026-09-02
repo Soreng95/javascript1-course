@@ -37,7 +37,7 @@ async function bootstrap(): Promise<void> {
     swaggerOptions: { persistAuthorization: true },
   });
 
-  const port = Number(process.env.PORT ?? 3000);
+  const port = Number(process.env.PORT ?? 8080);
   await app.listen(port);
 
   Logger.log(`API listening on http://localhost:${port}/api`, 'Bootstrap');
