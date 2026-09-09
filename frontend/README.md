@@ -34,14 +34,18 @@ ports 5500, 5501, 3000 and 8000.
 
 ```
 js/
-  config.js              API base URL, storage key, locale, shipping rules
+  env.js                 Environment detection, per-environment settings
+  config.js              Values derived from the active environment
   routes.js              Every internal page URL in one place
-  main.js                Shared bootstrap, loaded by every page
+  main.js                Shared bootstrap, exposes window.RainyDays
   api/
-    http.js              fetch wrapper: timeouts, JSON parsing, ApiError
+    endpoints.js         Every API path in one place
+    http.js              request / get / post / put, timeouts, ApiError
+    schemas.js           Expected shape of every API response
     products.js          getProducts(filters), getProduct(id), getTags()
     orders.js            createOrder(payload), getOrder(id)
   lib/
+    types.js             Runtime type guards, assertions, shape validation
     dom.js               qs, qsa, el, clear, onReady
     format.js            formatPrice, formatAmount, formatSizes
     status.js            showLoading, showError, showEmpty, withStatus
@@ -51,6 +55,101 @@ js/
     cart-badge.js        Live item count in the header
   pages/                 One module per page (to be written)
 ```
+
+## Environments
+
+`js/env.js` picks the environment from the hostname: `localhost` and `127.0.0.1` resolve to
+`local`, anything else to `production`. Each environment carries its own API base URL, request
+timeout and debug flag.
+
+Override it without editing code by loading any page with `?env=production` or `?env=local`.
+The choice is remembered in `localStorage`, so you only pass it once. From the console:
+
+```js
+RainyDays.env.setEnvironment('production');
+RainyDays.env.clearEnvironmentOverride();
+```
+
+The production URL in `js/env.js` is a placeholder and must be updated once the API is deployed.
+
+## Globals
+
+`main.js` runs on every page and exposes everything under `window.RainyDays`, so the modules are
+reachable from any script and from the browser console:
+
+```
+RainyDays.env        ENV, isLocal(), isProduction(), setEnvironment()
+RainyDays.http       request, get, post, put, ApiError
+RainyDays.endpoints  ENDPOINTS, toAbsoluteUrl(), withQuery()
+RainyDays.api        products, orders
+RainyDays.cart       the basket store
+RainyDays.types      guards, assertions, shape validation
+RainyDays.format     price and amount formatting
+RainyDays.routes     internal page URLs
+```
+
+Inside your own modules prefer a normal `import` over the global; the namespace exists for
+console debugging and for scripts that are not modules.
+
+## HTTP
+
+`js/api/http.js` exports one function per verb. Each takes an endpoint from
+`js/api/endpoints.js`, never a hand-written URL.
+
+```js
+import { ENDPOINTS, withQuery } from '../api/endpoints.js';
+import { get, post, put } from '../api/http.js';
+
+await get(withQuery(ENDPOINTS.products.list(), { gender: 'Female' }));
+await post(ENDPOINTS.orders.create(), payload);
+await put(ENDPOINTS.products.detail(id), changes);
+```
+
+Blank, `null` and `undefined` query values are dropped automatically. Every call has a timeout,
+turns non-2xx responses into an `ApiError` carrying `status` and `body`, and converts network
+failures into a message safe to show a user.
+
+The backend currently has no `PUT` route, and its CORS allowlist is `GET, POST, OPTIONS`.
+`put()` is ready but will fail until a route is added on the server.
+
+## Type checking
+
+`js/lib/types.js` replaces the compile-time safety TypeScript would give.
+
+**Guards** return a boolean: `isString`, `isNonEmptyString`, `isNumber`, `isInteger`,
+`isPositiveNumber`, `isBoolean`, `isArray`, `isArrayOf`, `isObject`, `isFunction`, `isNullish`,
+`isOneOf`, `isEmail`, `isUrl`, `typeOf`.
+
+**Assertions** return the value or throw a `ValidationError` naming the field:
+
+```js
+import { assertInteger } from '../lib/types.js';
+
+assertInteger(quantity, 'quantity');
+```
+
+**Fallbacks** never throw: `ensureString(value, '')`, `ensureNumber(value, 0)`, `ensureArray`,
+`ensureBoolean`, `ensureObject`.
+
+**Shapes** validate whole objects, including nested ones, and report the exact path that failed
+(`products[0].image.url must be a string, received number`):
+
+```js
+import { field, optional, shapeOf, validateShape } from '../lib/types.js';
+
+const SHAPE = {
+  id: field.nonEmptyString,
+  quantity: field.integer,
+  image: shapeOf({ url: field.string }),
+  note: optional(field.string),
+};
+
+validateShape(value, SHAPE, 'orderLine');
+```
+
+`js/api/schemas.js` applies this to every API response. If the server ever returns a product
+without a price, or a string where a number belongs, the call rejects with an `ApiError` instead
+of leaking bad data into the page.
 
 ### Loading and error states
 

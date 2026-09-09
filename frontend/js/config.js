@@ -1,6 +1,10 @@
-export const API_BASE_URL = 'http://localhost:8080/api';
+import { ENV } from './env.js';
 
-export const REQUEST_TIMEOUT_MS = 10000;
+export const API_BASE_URL = ENV.apiBaseUrl;
+
+export const REQUEST_TIMEOUT_MS = ENV.requestTimeoutMs;
+
+export const DEBUG = ENV.debug;
 
 export const CART_STORAGE_KEY = 'rainy-days.cart.v1';
 
