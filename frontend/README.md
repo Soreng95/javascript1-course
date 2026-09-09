@@ -1,47 +1,124 @@
-# Rainy Days
+# Rainy Days — Frontend
 
-## Live Project  
-https://soreng95.github.io/html-css-emil-soreng
+Vanilla JavaScript storefront for the Rainy Days e-commerce project. The frontend talks to the
+NestJS backend in `../backend` as a plain REST API.
 
----
+## Running locally
 
-## About the Project  
-This project is part of an HTML & CSS assignment. The goal was to build a responsive website based on a Figma design, focusing on structure, layout, and accessibility.
-Link to Figma-Desktop: https://www.figma.com/proto/pVN4fF49piEsmKE9JsgHkk/Rainydays?node-id=60-276&t=aCFeoEnVvi6qVBWL-1&starting-point-node-id=60%3A276
-Link to Figma Mobile: https://www.figma.com/proto/pVN4fF49piEsmKE9JsgHkk/Rainydays?node-id=163-2528&t=aCFeoEnVvi6qVBWL-1 
+Two servers must be running.
 
----
+**1. API** (port 8080)
 
-## Reflection  
+```
+cd ../backend
+npm install
+npm run start:dev
+```
 
-I do not believe I followed the DRY principle very well in this project.
+Swagger UI: http://localhost:8080/api/docs
 
-I am used to working with Tailwind, where I typically create reusable components and then import them to maintain a clean and scalable structure. For this project, I initially tried to structure the code similarly to a Next.js setup, with the idea of creating components and copying them into each HTML file.
+**2. Frontend** (port 5500)
 
-However, I realized that this approach was not ideal. Since plain HTML does not support component imports in the same way, and I could not configure path aliases (such as `@`), it led to unnecessary duplication.
+Use the VS Code *Live Server* extension, or:
 
-I have not worked with traditional CSS files in a long time, and I ended up styling many components individually. Fortunately, I was still able to reuse some parts, such as the cards, navigation, and footer.
+```
+python3 -m http.server 5500
+```
 
----
+Open http://localhost:5500/index.html
 
-## What I Would Do Differently  
+The API base URL lives in `js/config.js`. `CORS_ORIGIN` in `../backend/.env` already allows
+ports 5500, 5501, 3000 and 8000.
 
-If I were to do this project again, I would:
+## JavaScript structure
 
-- Start by defining global styles (e.g. `h1`, `p`, `a`) in a central CSS file  
-- Structure the CSS more like a component system from the beginning  
-- Focus more on reusability and consistency across components  
-- Avoid copying markup between files and instead simplify the structure  
+```
+js/
+  config.js              API base URL, storage key, locale, shipping rules
+  routes.js              Every internal page URL in one place
+  main.js                Shared bootstrap, loaded by every page
+  api/
+    http.js              fetch wrapper: timeouts, JSON parsing, ApiError
+    products.js          getProducts(filters), getProduct(id), getTags()
+    orders.js            createOrder(payload), getOrder(id)
+  lib/
+    dom.js               qs, qsa, el, clear, onReady
+    format.js            formatPrice, formatAmount, formatSizes
+    status.js            showLoading, showError, showEmpty, withStatus
+  store/
+    cart.js              localStorage basket, totals, subscribe()
+  components/
+    cart-badge.js        Live item count in the header
+  pages/                 One module per page (to be written)
+```
 
----
+### Loading and error states
 
-## Technologies Used  
+`withStatus` wraps any async call and renders the spinner, then either clears it or shows an
+error with a retry button:
 
-- HTML  
-- CSS  
+```js
+import { withStatus } from '../lib/status.js';
+import { getProducts } from '../api/products.js';
 
----
+const grid = document.querySelector('[data-product-grid]');
 
-## Notes  
+const load = async () => {
+  const products = await withStatus(grid, () => getProducts({ gender: 'Female' }), {
+    loadingMessage: 'Loading products',
+    onRetry: load,
+  });
 
-This project helped me better understand the differences between working with modern frameworks (like Next.js and Tailwind) and writing pure HTML and CSS. It highlighted the importance of planning structure and reusability early in the process.
+  if (!products) return;
+  render(grid, products);
+};
+
+load();
+```
+
+### Cart
+
+```js
+import { addItem, getItems, getCount, subscribe, toOrderPayload } from '../store/cart.js';
+
+addItem(product, { size: 'M', quantity: 2 });
+subscribe((items) => console.log(items.length));
+```
+
+State lives in `localStorage` under `rainy-days.cart.v1`, survives navigation, and syncs across
+open tabs. `toOrderPayload(email)` produces the exact body `POST /api/orders` expects.
+
+## DOM hooks
+
+Render targets are marked with data attributes so the markup and the JavaScript stay decoupled.
+
+| Page | Hook |
+| --- | --- |
+| `index.html` | `data-product-grid`, `data-featured-list` |
+| `products/index.html` | `data-product-grid`, `data-filters` |
+| `products/[slug]/index.html` | `data-product-detail`, `data-related-grid` |
+| `cart-page/index.html` | `data-cart-list`, `data-cart-totals` |
+| `checkout/index.html` | `data-checkout-form`, `data-checkout-summary` |
+| `success/[slug]/index.html` | `data-order-confirmation` |
+| every page | `data-cart-link` |
+
+## Adding a page module
+
+1. Create `js/pages/<page>.js`.
+2. Import `../main.js` first so the shared bootstrap runs.
+3. Point the page at it: `<script type="module" src="../js/pages/<page>.js"></script>`,
+   replacing the existing `main.js` tag.
+
+## Next steps
+
+| Requirement | Module to write |
+| --- | --- |
+| 1. Product list on the homepage | `js/pages/home.js` |
+| 2. Single product page | `js/pages/product.js` |
+| 3. Add to basket | `js/pages/product.js`, `js/pages/products.js` |
+| 4. Remove from basket | `js/pages/cart.js` |
+| 5. Cart summary and total | `js/pages/cart.js` |
+| 6. Order confirmation | `js/pages/success.js` |
+| 11. Filtering | `js/pages/products.js` |
+| 12. Category pages | new pages under `category/` |
+| 13. Terms and Privacy | new pages |

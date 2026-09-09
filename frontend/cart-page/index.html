@@ -69,7 +69,7 @@
                 <a class="nav-mobile__link" href="../coming-soon/index.html"
                   >Search</a
                 >
-                <a class="nav-mobile__link" href="../cart-page/index.html"
+                <a data-cart-link class="nav-mobile__link" href="../cart-page/index.html"
                   >Cart</a
                 >
               </div>
@@ -121,7 +121,7 @@
                 aria-label="Search"
                 >Search</a
               >
-              <a
+              <a data-cart-link
                 class="icon-btn"
                 href="../cart-page/index.html"
                 aria-label="Cart"
@@ -166,7 +166,7 @@
               >
             </div>
 
-            <div class="cart-list">
+            <div class="cart-list" data-cart-list>
               <article class="cart-item">
                 <img
                   src="../assets/images/jackets/RainyDays_Jacket1.jpg"
@@ -276,7 +276,7 @@
               </article>
             </div>
 
-            <div class="cart-totals">
+            <div class="cart-totals" data-cart-totals>
               <div class="cart-totals__row">
                 <span>Subtotal</span>
                 <span>4 397,00 NOK</span>
@@ -473,5 +473,6 @@
         </nav>
       </div>
     </footer>
+    <script type="module" src="../js/main.js"></script>
   </body>
 </html>

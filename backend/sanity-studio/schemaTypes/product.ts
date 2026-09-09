@@ -29,7 +29,7 @@ export const product = defineType({
       name: 'gender',
       title: 'Gender',
       type: 'string',
-      options: { list: ['Male', 'Female'], layout: 'radio' },
+      options: { list: ['Male', 'Female', 'Unisex'], layout: 'radio' },
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -89,7 +89,7 @@ export const product = defineType({
       title: 'Tags',
       type: 'array',
       of: [{ type: 'string' }],
-      options: { list: ['jacket', 'mens', 'womens'] },
+      options: { list: ['jacket', 'mens', 'womens', 'unisex'] },
     }),
     defineField({
       name: 'favorite',

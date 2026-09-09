@@ -12,9 +12,9 @@ const toBoolean = ({ value }: { value: unknown }) => {
 };
 
 export class QueryProductsDto {
-  @ApiPropertyOptional({ enum: ['Male', 'Female'], description: 'Filter by gender' })
+  @ApiPropertyOptional({ enum: ['Male', 'Female', 'Unisex'], description: 'Filter by gender' })
   @IsOptional()
-  @IsIn(['Male', 'Female'])
+  @IsIn(['Male', 'Female', 'Unisex'])
   gender?: string;
 
   @ApiPropertyOptional({ example: 'jacket', description: 'Filter by a single tag' })

@@ -48,24 +48,24 @@
                   href="index.html"
                   >Home</a
                 >
-                <a class="nav-mobile__link" href="products/index.html"
+                <a class="nav-mobile__link" href="../products/index.html"
                   >Shop All</a
                 >
-                <a class="nav-mobile__link" href="products/index.html">Men</a>
-                <a class="nav-mobile__link" href="products/index.html">Women</a>
-                <a class="nav-mobile__link" href="products/index.html"
+                <a class="nav-mobile__link" href="../products/index.html">Men</a>
+                <a class="nav-mobile__link" href="../products/index.html">Women</a>
+                <a class="nav-mobile__link" href="../products/index.html"
                   >New Arrivals</a
                 >
-                <a class="nav-mobile__link" href="coming-soon/index.html"
+                <a class="nav-mobile__link" href="../coming-soon/index.html"
                   >About Us</a
                 >
-                <a class="nav-mobile__link" href="coming-soon/index.html"
+                <a class="nav-mobile__link" href="../coming-soon/index.html"
                   >Contact</a
                 >
-                <a class="nav-mobile__link" href="coming-soon/index.html"
+                <a class="nav-mobile__link" href="../coming-soon/index.html"
                   >Search</a
                 >
-                <a class="nav-mobile__link" href="cart/index.html">Cart</a>
+                <a data-cart-link class="nav-mobile__link" href="../cart-page/index.html">Cart</a>
               </div>
             </div>
           </div>
@@ -84,9 +84,9 @@
             class="nav-desktop__group nav-desktop__group--left"
             aria-label="Primary categories"
           >
-            <a class="nav-link" href="products/index.html">Shop All</a>
-            <a class="nav-link" href="products/index.html">Men</a>
-            <a class="nav-link" href="products/index.html">Women</a>
+            <a class="nav-link" href="../products/index.html">Shop All</a>
+            <a class="nav-link" href="../products/index.html">Men</a>
+            <a class="nav-link" href="../products/index.html">Women</a>
           </div>
 
           <a
@@ -103,19 +103,19 @@
 
           <div class="nav-desktop__group nav-desktop__group--right">
             <div class="nav-desktop__links" aria-label="Company links">
-              <a class="nav-link" href="products/index.html">New Arrivals</a>
-              <a class="nav-link" href="coming-soon/index.html">About Us</a>
-              <a class="nav-link" href="coming-soon/index.html">Contact</a>
+              <a class="nav-link" href="../products/index.html">New Arrivals</a>
+              <a class="nav-link" href="../coming-soon/index.html">About Us</a>
+              <a class="nav-link" href="../coming-soon/index.html">Contact</a>
             </div>
 
             <div class="nav-desktop__icons" aria-label="Actions">
               <a
                 class="icon-btn"
-                href="coming-soon/index.html"
+                href="../coming-soon/index.html"
                 aria-label="Search"
                 >Search</a
               >
-              <a class="icon-btn" href="cart/index.html" aria-label="Cart"
+              <a data-cart-link class="icon-btn" href="../cart-page/index.html" aria-label="Cart"
                 >Cart</a
               >
             </div>
@@ -136,7 +136,7 @@
               ←
             </a>
 
-            <form class="checkout-form__content">
+            <form class="checkout-form__content" data-checkout-form novalidate>
               <div class="checkout-form__group">
                 <h1 class="checkout-form__title">Contact</h1>
                 <input
@@ -223,7 +223,7 @@
             </form>
           </article>
 
-          <article class="checkout-summary">
+          <article class="checkout-summary" data-checkout-summary>
             <div class="checkout-summary__header">
               <div class="checkout-summary__title-wrap">
                 <h2 class="checkout-summary__title">Your Cart</h2>
@@ -558,5 +558,6 @@
         </nav>
       </div>
     </footer>
+    <script type="module" src="../js/main.js"></script>
   </body>
 </html>

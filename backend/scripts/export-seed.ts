@@ -1,6 +1,17 @@
 import { writeFileSync } from 'fs';
-import { join } from 'path';
-import { PRODUCT_SEED } from '../src/data/products.seed';
+import { join, relative } from 'path';
+import { PRODUCT_IMAGE_FILES, PRODUCT_SEED } from '../src/data/products.seed';
+
+const repoRoot = join(__dirname, '..', '..');
+const studioDir = join(__dirname, '..', 'sanity-studio');
+
+const assetRef = (productId: string, imageUrl: string): string => {
+  const localPath = PRODUCT_IMAGE_FILES[productId];
+  if (!localPath) return `image@${imageUrl}`;
+
+  const fromStudio = relative(studioDir, join(repoRoot, localPath));
+  return `image@file://./${fromStudio}`;
+};
 
 const documents = PRODUCT_SEED.map((product) => ({
   _id: `product-${product.id}`,
@@ -13,13 +24,15 @@ const documents = PRODUCT_SEED.map((product) => ({
   baseColor: product.baseColor,
   price: product.price,
   discountedPrice: product.onSale ? product.discountedPrice : undefined,
-  imageUrl: product.image.url,
-  imageAlt: product.image.alt,
+  image: {
+    _sanityAsset: assetRef(product.id, product.image.url),
+    alt: product.image.alt,
+  },
   tags: product.tags,
   favorite: product.favorite,
 }));
 
-const target = join(__dirname, '..', 'sanity-studio', 'seed.ndjson');
+const target = join(studioDir, 'seed.ndjson');
 writeFileSync(target, documents.map((doc) => JSON.stringify(doc)).join('\n') + '\n');
 
 process.stdout.write(`Wrote ${documents.length} documents to ${target}\n`);

@@ -66,7 +66,7 @@
                 <a class="nav-mobile__link" href="coming-soon/index.html"
                   >Search</a
                 >
-                <a class="nav-mobile__link" href="cart-page/index.html">Cart</a>
+                <a data-cart-link class="nav-mobile__link" href="cart-page/index.html">Cart</a>
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@
                 aria-label="Search"
                 >Search</a
               >
-              <a class="icon-btn" href="cart-page/index.html" aria-label="Cart"
+              <a data-cart-link class="icon-btn" href="cart-page/index.html" aria-label="Cart"
                 >Cart</a
               >
             </div>
@@ -138,9 +138,9 @@
           </div>
         </div>
       </section>
-      <section class="product-gallery">
+      <section class="product-gallery" data-product-grid-section>
         <div class="container">
-          <div class="product-gallery__grid">
+          <div class="product-gallery__grid" data-product-grid>
             <article class="product-gallery__card">
               <a href="products/index.html" class="product-gallery__link">
                 <img
@@ -294,7 +294,7 @@
                 >
               </div>
 
-              <div class="featured-products__list">
+              <div class="featured-products__list" data-featured-list>
                 <article class="featured-item">
                   <img
                     class="featured-item__image"
@@ -529,5 +529,6 @@
         </div>
       </footer>
     </main>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

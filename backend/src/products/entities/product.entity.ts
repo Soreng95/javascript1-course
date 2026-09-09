@@ -18,7 +18,7 @@ export class Product {
   @ApiProperty({ example: 'The Women\'s Rainy Days M83 jacket delivers waterproof protection.' })
   description!: string;
 
-  @ApiProperty({ example: 'Female', enum: ['Male', 'Female'] })
+  @ApiProperty({ example: 'Female', enum: ['Male', 'Female', 'Unisex'] })
   gender!: string;
 
   @ApiProperty({ example: ['XS', 'S', 'M', 'L', 'XL', 'XXL'], type: [String] })
