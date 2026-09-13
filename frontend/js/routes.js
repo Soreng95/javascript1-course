@@ -17,10 +17,10 @@ export const ORDER_ID_PARAM = 'order';
 export const routes = {
   home: () => new URL('index.html', siteRoot).href,
   products: (filters = {}) => withQuery('products/index.html', filters),
-  product: (id) => withQuery('products/[slug]/index.html', { [PRODUCT_ID_PARAM]: id }),
+  product: (id) => withQuery('product/index.html', { [PRODUCT_ID_PARAM]: id }),
   cart: () => new URL('cart-page/index.html', siteRoot).href,
   checkout: () => new URL('checkout/index.html', siteRoot).href,
-  success: (orderId) => withQuery('success/[slug]/index.html', { [ORDER_ID_PARAM]: orderId }),
+  confirmation: (orderId) => withQuery('checkout/confirmation/index.html', { [ORDER_ID_PARAM]: orderId }),
   comingSoon: () => new URL('coming-soon/index.html', siteRoot).href,
 };
 

@@ -195,10 +195,10 @@ Render targets are marked with data attributes so the markup and the JavaScript 
 | --- | --- |
 | `index.html` | `data-product-grid`, `data-featured-list` |
 | `products/index.html` | `data-product-grid`, `data-filters` |
-| `products/[slug]/index.html` | `data-product-detail`, `data-related-grid` |
+| `product/index.html` | `data-product-detail`, `data-related-grid` |
 | `cart-page/index.html` | `data-cart-list`, `data-cart-totals` |
 | `checkout/index.html` | `data-checkout-form`, `data-checkout-summary` |
-| `success/[slug]/index.html` | `data-order-confirmation` |
+| `checkout/confirmation/index.html` | `data-order-confirmation` |
 | every page | `data-cart-link` |
 
 ## Adding a page module
@@ -217,7 +217,7 @@ Render targets are marked with data attributes so the markup and the JavaScript 
 | 3. Add to basket | `js/pages/product.js`, `js/pages/products.js` |
 | 4. Remove from basket | `js/pages/cart.js` |
 | 5. Cart summary and total | `js/pages/cart.js` |
-| 6. Order confirmation | `js/pages/success.js` |
+| 6. Order confirmation | `js/pages/confirmation.js` |
 | 11. Filtering | `js/pages/products.js` |
 | 12. Category pages | new pages under `category/` |
 | 13. Terms and Privacy | new pages |
