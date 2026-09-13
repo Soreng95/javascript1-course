@@ -133,36 +133,42 @@
             <h1 class="products-toolbar__title">SHOP ALL</h1>
 
             <div class="products-toolbar__sort">
-              <a href="#" class="products-toolbar__link">
-                Sort By
-                <span class="products-toolbar__chevron" aria-hidden="true"
-                  >⌄</span
-                >
-              </a>
-            </div>
+            <label class="products-toolbar__field">
+              <span class="products-toolbar__field-label">Sort By</span>
+              <select class="products-toolbar__select" data-sort>
+                <option value="title-asc">Name A&ndash;Z</option>
+                <option value="title-desc">Name Z&ndash;A</option>
+                <option value="discountedPrice-asc">Price: low to high</option>
+                <option value="discountedPrice-desc">Price: high to low</option>
+              </select>
+            </label>
+          </div>
           </div>
 
           <div class="products-toolbar__filters" data-filters>
-            <a href="#" class="products-toolbar__link">
-              Season
-              <span class="products-toolbar__chevron" aria-hidden="true"
-                >⌄</span
-              >
-            </a>
+            <label class="products-toolbar__field">
+              <span class="products-toolbar__field-label">Gender</span>
+              <select class="products-toolbar__select" data-filter="gender">
+                <option value="">All</option>
+                <option value="Female">Women</option>
+                <option value="Male">Men</option>
+                <option value="Unisex">Unisex</option>
+              </select>
+            </label>
 
-            <a href="#" class="products-toolbar__link">
-              Colour
-              <span class="products-toolbar__chevron" aria-hidden="true"
-                >⌄</span
-              >
-            </a>
+            <label class="products-toolbar__field">
+              <span class="products-toolbar__field-label">Colour</span>
+              <select class="products-toolbar__select" data-filter="baseColor">
+                <option value="">All</option>
+              </select>
+            </label>
 
-            <a href="#" class="products-toolbar__link">
-              Product
-              <span class="products-toolbar__chevron" aria-hidden="true"
-                >⌄</span
-              >
-            </a>
+            <label class="products-toolbar__field">
+              <span class="products-toolbar__field-label">Product</span>
+              <select class="products-toolbar__select" data-filter="tag">
+                <option value="">All</option>
+              </select>
+            </label>
           </div>
         </div>
       </section>

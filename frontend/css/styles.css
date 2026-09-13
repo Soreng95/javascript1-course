@@ -2464,3 +2464,25 @@ PRODUCT GALLERY */
 .checkout-feedback--error {
   color: var(--destructive);
 }
+
+.products-toolbar__field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.products-toolbar__select {
+  font: inherit;
+  color: var(--foreground);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--foreground);
+  padding: 0.2rem 0.25rem;
+  cursor: pointer;
+}
+
+.products-toolbar__select:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
