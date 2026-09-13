@@ -8,10 +8,10 @@ export const DEBUG = ENV.debug;
 
 export const CART_STORAGE_KEY = 'rainy-days.cart.v1';
 
-export const LOCALE = 'nb-NO';
+export const LOCALE = 'en-US';
 
-export const CURRENCY = 'NOK';
+export const CURRENCY = 'USD';
 
-export const SHIPPING_COST = 99;
+export const SHIPPING_COST = 9.99;
 
-export const FREE_SHIPPING_THRESHOLD = 1500;
+export const FREE_SHIPPING_THRESHOLD = 150;

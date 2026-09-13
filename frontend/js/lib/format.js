@@ -1,17 +1,8 @@
 import { CURRENCY, LOCALE } from '../config.js';
 
-const decimalFormatter = new Intl.NumberFormat(LOCALE, {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
+const priceFormatter = new Intl.NumberFormat(LOCALE, {
+  style: 'currency',
+  currency: CURRENCY,
 });
 
-const compactFormatter = new Intl.NumberFormat(LOCALE, {
-  minimumFractionDigits: 0,
-  maximumFractionDigits: 0,
-});
-
-export const formatPrice = (value) => `${compactFormatter.format(Math.round(value))},-`;
-
-export const formatAmount = (value) => `${decimalFormatter.format(value)} ${CURRENCY}`;
-
-export const formatSizes = (sizes = []) => sizes.join(' ');
+export const formatPrice = (value) => priceFormatter.format(value);

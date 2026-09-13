@@ -144,106 +144,53 @@
         <div class="container product-detail__layout">
           <article class="product-detail__gallery">
             <div class="product-detail__images">
-              <img
-                src="../assets/images/jacketOnPeople/pexels-infected-store-1913417375-28758134.jpg"
-                alt="Person wearing the Polar Mist Shell Jacket in white"
-                class="product-detail__image"
-              />
-              <img
-                src="../assets/images/jackets/RainyDays_Jacket3.jpg"
-                alt="Polar Mist Shell Jacket shown in red"
-                class="product-detail__image"
-              />
+              <img src="" alt="" class="product-detail__image" data-product-image />
             </div>
-
-            <p class="product-detail__text">
-              A versatile jacket built for everyday use, combining clean design,
-              lightweight comfort, and reliable protection in any weather.
-            </p>
           </article>
 
           <article class="product-summary" data-product-detail>
-            <h1 class="product-summary__title">Polar Mist Shell Jacket</h1>
-            <p class="product-summary__price">1 499,-</p>
+            <h1 class="product-summary__title" data-title></h1>
+            <p class="product-summary__price" data-price></p>
 
             <div class="product-summary__group">
               <p class="product-summary__label">Color</p>
-              <div class="product-summary__colors">
-                <a
-                  href="#"
-                  class="product-summary__color product-summary__color--red"
-                  aria-label="Choose red color"
-                ></a>
-                <a
-                  href="#"
-                  class="product-summary__color product-summary__color--grey"
-                  aria-label="Choose grey color"
-                ></a>
-                <a
-                  href="#"
-                  class="product-summary__color product-summary__color--orange"
-                  aria-label="Choose orange color"
-                ></a>
-              </div>
+              <div class="product-summary__colors" data-color></div>
             </div>
 
             <div class="product-summary__group">
               <p class="product-summary__label">Size</p>
-              <div class="product-summary__sizes">
-                <a href="#" class="product-summary__size">XS</a>
-                <a href="#" class="product-summary__size">S</a>
-                <a href="#" class="product-summary__size">M</a>
-                <a href="#" class="product-summary__size">L</a>
-                <a href="#" class="product-summary__size">XL</a>
-              </div>
-              <a href="#" class="product-summary__guide">Size guide</a>
+              <div class="product-summary__sizes" data-sizes></div>
             </div>
 
             <div class="product-summary__group">
               <p class="product-summary__label">Quantity</p>
               <div class="product-summary__quantity">
-                <a
-                  href="#"
+                <button
+                  type="button"
                   class="product-summary__qty-btn"
+                  data-quantity-decrease
                   aria-label="Decrease quantity"
-                  >−</a
                 >
-                <span class="product-summary__qty-value">1</span>
-                <a
-                  href="#"
+                  &minus;
+                </button>
+                <span class="product-summary__qty-value" data-quantity>1</span>
+                <button
+                  type="button"
                   class="product-summary__qty-btn"
+                  data-quantity-increase
                   aria-label="Increase quantity"
-                  >+</a
                 >
+                  +
+                </button>
               </div>
             </div>
 
-            <a href="../cart-page/index.html" class="product-summary__button"
-              >Add to cart</a
-            >
+            <button type="button" class="product-summary__button" data-add-to-cart>
+              Add to cart
+            </button>
+            <p class="product-summary__feedback" data-feedback role="status"></p>
 
-            <div
-              class="product-summary__rating"
-              aria-label="Rated 5 out of 5 stars"
-            >
-              <span>★ ★ ★ ★ ★</span>
-            </div>
-
-            <p class="product-summary__description">
-              Lightweight protection meets everyday comfort. Designed for
-              movement and changing weather, this jacket offers a breathable
-              feel, durable materials, and a clean, versatile fit for both city
-              life and outdoor adventures.
-            </p>
-
-            <div class="product-summary__extra-links">
-              <a href="#" class="product-summary__extra-link"
-                >Details &amp; care</a
-              >
-              <a href="#" class="product-summary__extra-link"
-                >Shipping &amp; returns</a
-              >
-            </div>
+            <p class="product-summary__description" data-description></p>
           </article>
 
           <article class="product-details-table">
@@ -315,107 +262,6 @@
         <div class="container">
           <h1 class="you-may-like">You may like</h1>
           <div class="product-gallery__grid" data-related-grid>
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-mauroignaciotorres-17052555.jpg"
-                  alt="Sesert Wind jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Sesert Wind</p>
-                    <p class="product-card-info__price">1 499,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-infected-store-1913417375-28758134.jpg"
-                  alt="Arctic Light Shell jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Arctic Light Shell</p>
-                    <p class="product-card-info__price">1 299,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-joey-cede-2152653963-35900422.jpg"
-                  alt="Midnight Summit jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Midnight Summit</p>
-                    <p class="product-card-info__price">1 299,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-infected-store-1913417375-28758137.jpg"
-                  alt="Sesert Wind jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Arctic Light Shell</p>
-                    <p class="product-card-info__price">1 299,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
           </div>
         </div>
       </section>
@@ -481,6 +327,6 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/pages/product.js"></script>
   </body>
 </html>

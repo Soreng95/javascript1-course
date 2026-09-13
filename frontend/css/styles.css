@@ -2420,3 +2420,17 @@ PRODUCT GALLERY */
 .cart-badge[hidden] {
   display: none;
 }
+
+.product-summary__size--selected {
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.product-summary__feedback {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+}
+
+.product-summary__feedback--error {
+  color: var(--destructive);
+}
