@@ -2434,3 +2434,33 @@ PRODUCT GALLERY */
 .product-summary__feedback--error {
   color: var(--destructive);
 }
+
+.cart-empty {
+  margin: 2rem 0;
+  color: var(--muted-foreground);
+}
+
+.cart-remove {
+  padding: 0;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart-remove:hover,
+.cart-remove:focus-visible {
+  color: var(--destructive);
+}
+
+.checkout-feedback {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+}
+
+.checkout-feedback--error {
+  color: var(--destructive);
+}

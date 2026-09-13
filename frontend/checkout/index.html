@@ -136,7 +136,7 @@
               ←
             </a>
 
-            <form class="checkout-form__content" data-checkout-form novalidate>
+            <form class="checkout-form__content" id="checkout-form" data-checkout-form novalidate>
               <div class="checkout-form__group">
                 <h1 class="checkout-form__title">Contact</h1>
                 <input
@@ -144,6 +144,7 @@
                   name="email"
                   placeholder="Email"
                   class="checkout-form__input"
+                  required
                 />
               </div>
 
@@ -156,12 +157,14 @@
                     name="first-name"
                     placeholder="Name"
                     class="checkout-form__input"
+                  required
                   />
                   <input
                     type="text"
                     name="last-name"
                     placeholder="Last Name"
                     class="checkout-form__input"
+                  required
                   />
                 </div>
 
@@ -170,6 +173,7 @@
                   name="address"
                   placeholder="Address"
                   class="checkout-form__input"
+                  required
                 />
 
                 <div class="checkout-form__row">
@@ -178,12 +182,14 @@
                     name="city"
                     placeholder="City"
                     class="checkout-form__input"
+                  required
                   />
                   <input
                     type="text"
                     name="post-code"
                     placeholder="Post Code"
                     class="checkout-form__input"
+                  required
                   />
                 </div>
               </div>
@@ -196,6 +202,7 @@
                   name="card-number"
                   placeholder="Card number"
                   class="checkout-form__input"
+                  required
                 />
 
                 <div class="checkout-form__row">
@@ -204,12 +211,14 @@
                     name="expiry"
                     placeholder="MM/YYYY"
                     class="checkout-form__input"
+                  required
                   />
                   <input
                     type="text"
                     name="ccv"
                     placeholder="CCV"
                     class="checkout-form__input"
+                  required
                   />
                 </div>
 
@@ -218,6 +227,7 @@
                   name="name-on-card"
                   placeholder="Name on card"
                   class="checkout-form__input"
+                  required
                 />
               </div>
             </form>
@@ -238,139 +248,21 @@
               </a>
             </div>
 
-            <div class="checkout-list">
-              <article class="checkout-item">
-                <img
-                  src="../assets/images/jackets/RainyDays_Jacket1.jpg"
-                  alt="Polar Mist jacket"
-                  class="checkout-item__image"
-                />
-
-                <div class="checkout-item__content">
-                  <div class="checkout-item__top">
-                    <div>
-                      <h3 class="checkout-item__title">Polar Mist</h3>
-                      <p class="checkout-item__meta">Size / Colour</p>
-                      <p class="checkout-item__price">1 499,-</p>
-                    </div>
-
-                    <div class="checkout-item__quantity">
-                      <a
-                        href="#"
-                        class="checkout-item__qty-btn"
-                        aria-label="Decrease quantity"
-                        >−</a
-                      >
-                      <span class="checkout-item__qty-value">1</span>
-                      <a
-                        href="#"
-                        class="checkout-item__qty-btn"
-                        aria-label="Increase quantity"
-                        >+</a
-                      >
-                    </div>
-                  </div>
-
-                  <p class="checkout-item__sku">SKU: RA7100/003443/235</p>
-                </div>
-              </article>
-
-              <article class="checkout-item">
-                <img
-                  src="../assets/images/jackets/RainyDays_Jacket3.jpg"
-                  alt="Graphite Storm jacket"
-                  class="checkout-item__image"
-                />
-
-                <div class="checkout-item__content">
-                  <div class="checkout-item__top">
-                    <div>
-                      <h3 class="checkout-item__title">Graphite Storm</h3>
-                      <p class="checkout-item__meta">Size / Colour</p>
-                      <p class="checkout-item__price">1 299,-</p>
-                    </div>
-
-                    <div class="checkout-item__quantity">
-                      <a
-                        href="#"
-                        class="checkout-item__qty-btn"
-                        aria-label="Decrease quantity"
-                        >−</a
-                      >
-                      <span class="checkout-item__qty-value">1</span>
-                      <a
-                        href="#"
-                        class="checkout-item__qty-btn"
-                        aria-label="Increase quantity"
-                        >+</a
-                      >
-                    </div>
-                  </div>
-
-                  <p class="checkout-item__sku">SKU: RA7100/003443/235</p>
-                </div>
-              </article>
-
-              <article class="checkout-item">
-                <img
-                  src="../assets/images/jackets/RainyDays_Jacket5.jpg"
-                  alt="Titan Expeditio jacket"
-                  class="checkout-item__image"
-                />
-
-                <div class="checkout-item__content">
-                  <div class="checkout-item__top">
-                    <div>
-                      <h3 class="checkout-item__title">Titan Expeditio</h3>
-                      <p class="checkout-item__meta">Size / Colour</p>
-                      <p class="checkout-item__price">1 599,-</p>
-                    </div>
-
-                    <div class="checkout-item__quantity">
-                      <a
-                        href="#"
-                        class="checkout-item__qty-btn"
-                        aria-label="Decrease quantity"
-                        >−</a
-                      >
-                      <span class="checkout-item__qty-value">1</span>
-                      <a
-                        href="#"
-                        class="checkout-item__qty-btn"
-                        aria-label="Increase quantity"
-                        >+</a
-                      >
-                    </div>
-                  </div>
-
-                  <p class="checkout-item__sku">SKU: RA7100/003443/235</p>
-                </div>
-              </article>
+            <div class="checkout-list" data-checkout-list>
             </div>
 
-            <div class="checkout-totals">
-              <div class="checkout-totals__row">
-                <span>Subtotal</span>
-                <span>4 397,00 NOK</span>
-              </div>
+            <div class="checkout-totals" data-checkout-totals></div>
 
-              <div class="checkout-totals__row">
-                <span>Shipping</span>
-                <span>99,00 NOK</span>
-              </div>
-
-              <div class="checkout-totals__row checkout-totals__row--total">
-                <span>Total</span>
-                <span>4 496,00 NOK</span>
-              </div>
-            </div>
-
-            <a
-              href="./confirmation/index.html"
+            <button
+              type="submit"
+              form="checkout-form"
               class="checkout-summary__pay-button"
+              data-pay
             >
               Pay now
-            </a>
+            </button>
+
+            <p class="checkout-feedback" data-checkout-feedback role="status"></p>
 
             <a
               href="../products/index.html"
@@ -392,108 +284,7 @@
       <section class="product-gallery">
         <div class="container">
           <h1 class="you-may-like">You may like</h1>
-          <div class="product-gallery__grid">
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-mauroignaciotorres-17052555.jpg"
-                  alt="Sesert Wind jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Sesert Wind</p>
-                    <p class="product-card-info__price">1 499,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-infected-store-1913417375-28758134.jpg"
-                  alt="Arctic Light Shell jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Arctic Light Shell</p>
-                    <p class="product-card-info__price">1 299,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-joey-cede-2152653963-35900422.jpg"
-                  alt="Midnight Summit jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Midnight Summit</p>
-                    <p class="product-card-info__price">1 299,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
-            <article class="product-gallery__card">
-              <a href="../products/index.html" class="product-gallery__link">
-                <img
-                  src="../assets/images/jacketOnPeople/pexels-infected-store-1913417375-28758137.jpg"
-                  alt="Sesert Wind jacket"
-                  class="product-gallery__image"
-                />
-
-                <div class="product-card-info">
-                  <div class="product-card-info__left">
-                    <p class="product-card-info__title">Arctic Light Shell</p>
-                    <p class="product-card-info__price">1 299,-</p>
-                  </div>
-
-                  <div class="product-card-info__right">
-                    <p class="product-card-info__sizes">S M L XL</p>
-                    <div class="product-card-info__colors">
-                      <span class="color color--red"></span>
-                      <span class="color color--gray"></span>
-                      <span class="color color--orange"></span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </article>
+          <div class="product-gallery__grid" data-suggestions-grid>
           </div>
         </div>
       </section>
@@ -558,6 +349,6 @@
         </nav>
       </div>
     </footer>
-    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/pages/checkout.js"></script>
   </body>
 </html>

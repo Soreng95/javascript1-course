@@ -31,11 +31,10 @@ export const getCount = () => read().reduce((total, item) => total + item.quanti
 export const getSubtotal = () =>
   read().reduce((total, item) => total + item.price * item.quantity, 0);
 
-export const getShipping = () => {
-  const subtotal = getSubtotal();
-  if (subtotal === 0 || subtotal >= FREE_SHIPPING_THRESHOLD) return 0;
-  return SHIPPING_COST;
-};
+export const shippingFor = (subtotal) =>
+  subtotal === 0 || subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+
+export const getShipping = () => shippingFor(getSubtotal());
 
 export const getTotal = () => getSubtotal() + getShipping();
 
