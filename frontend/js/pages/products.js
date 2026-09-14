@@ -8,7 +8,12 @@ const grid = qs('[data-product-grid]');
 const favoritesGrid = qs('[data-favorites-grid]');
 const sortSelect = qs('[data-sort]');
 
-const currentFilters = () => Object.fromEntries(new URLSearchParams(window.location.search));
+const preset = grid.dataset.gender ? { gender: grid.dataset.gender } : {};
+
+const currentFilters = () => ({
+  ...Object.fromEntries(new URLSearchParams(window.location.search)),
+  ...preset,
+});
 
 const render = (container, products) => {
   clear(container);
