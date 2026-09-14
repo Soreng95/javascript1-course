@@ -1,4 +1,4 @@
-import { DEBUG, REQUEST_TIMEOUT_MS } from '../config.js';
+import { REQUEST_TIMEOUT_MS } from '../config.js';
 import { toAbsoluteUrl } from './endpoints.js';
 import { ValidationError, isFunction, isNonEmptyString, isObject } from '../lib/types.js';
 
@@ -67,7 +67,6 @@ export const request = async (endpoint, { method = 'GET', body, validate, header
   } catch (error) {
     if (error instanceof ApiError) throw error;
     if (error instanceof ValidationError) {
-      if (DEBUG) window.console.error(`${method} ${url} returned unexpected data`, error);
       throw new ApiError(
         'The server returned data in an unexpected format. Please try again later.',
         0,

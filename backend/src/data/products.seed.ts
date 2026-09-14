@@ -75,7 +75,7 @@ export const PRODUCT_SEED: Product[] = [
     description: 'The Men\'s Rainy Days Silverbreeze jacket is the ultimate waterproof rain jacket for those stormy weather conditions.',
     gender: 'Male',
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-    baseColor: 'Gray',
+    baseColor: 'Grey',
     price: 139.99,
     discountedPrice: 114.99,
     onSale: true,

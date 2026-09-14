@@ -23,8 +23,4 @@ window.RainyDays = {
 
 onReady(() => {
   initCartBadge();
-
-  if (ENV.debug) {
-    window.console.info(`Rainy Days running against ${ENV.name} API: ${ENV.apiBaseUrl}`);
-  }
 });

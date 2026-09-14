@@ -47,13 +47,22 @@ js/
   lib/
     types.js             Runtime type guards, assertions, shape validation
     dom.js               qs, qsa, el, clear, onReady
-    format.js            formatPrice, formatAmount, formatSizes
+    format.js            formatPrice
     status.js            showLoading, showError, showEmpty, withStatus
   store/
     cart.js              localStorage basket, totals, subscribe()
   components/
     cart-badge.js        Live item count in the header
-  pages/                 One module per page (to be written)
+    product-card.js      One card in a product grid
+    cart-view.js         Cart rows and totals, shared by cart and checkout
+    suggestions.js       "You may like" grid
+  pages/
+    home.js              Grid, Carefully Selected and the mobile carousel
+    products.js          Listing, filtering and sorting; also the category pages
+    product.js           Detail view, size selection, add to cart
+    cart.js              Cart page
+    checkout.js          Checkout summary and order submission
+    confirmation.js      Order receipt
 ```
 
 ## Environments
@@ -193,12 +202,13 @@ Render targets are marked with data attributes so the markup and the JavaScript 
 
 | Page | Hook |
 | --- | --- |
-| `index.html` | `data-product-grid`, `data-featured-list` |
-| `products/index.html` | `data-product-grid`, `data-filters` |
-| `product/index.html` | `data-product-detail`, `data-related-grid` |
-| `cart-page/index.html` | `data-cart-list`, `data-cart-totals` |
-| `checkout/index.html` | `data-checkout-form`, `data-checkout-summary` |
-| `checkout/confirmation/index.html` | `data-order-confirmation` |
+| `index.html` | `data-product-grid`, `data-featured-list`, `data-featured-carousel` |
+| `products/index.html` | `data-product-grid`, `data-favorites-grid`, `data-filters`, `data-filter`, `data-sort` |
+| `category/*.html` | the same, plus `data-gender` on the grid to lock the category |
+| `product/index.html` | `data-product-detail`, `data-product-image`, `data-sizes`, `data-add-to-cart`, `data-related-grid` |
+| `cart-page/index.html` | `data-cart-list`, `data-cart-totals`, `data-suggestions-grid` |
+| `checkout/index.html` | `data-checkout-form`, `data-checkout-list`, `data-checkout-totals`, `data-pay` |
+| `checkout/confirmation/index.html` | `data-order-id`, `data-order-shipping`, `data-order-total` |
 | every page | `data-cart-link` |
 
 ## Adding a page module
@@ -208,16 +218,37 @@ Render targets are marked with data attributes so the markup and the JavaScript 
 3. Point the page at it: `<script type="module" src="../js/pages/<page>.js"></script>`,
    replacing the existing `main.js` tag.
 
-## Next steps
+## Pages
 
-| Requirement | Module to write |
+| Page | Module |
 | --- | --- |
-| 1. Product list on the homepage | `js/pages/home.js` |
-| 2. Single product page | `js/pages/product.js` |
-| 3. Add to basket | `js/pages/product.js`, `js/pages/products.js` |
-| 4. Remove from basket | `js/pages/cart.js` |
-| 5. Cart summary and total | `js/pages/cart.js` |
-| 6. Order confirmation | `js/pages/confirmation.js` |
-| 11. Filtering | `js/pages/products.js` |
-| 12. Category pages | new pages under `category/` |
-| 13. Terms and Privacy | new pages |
+| `index.html` | `js/pages/home.js` |
+| `products/index.html` | `js/pages/products.js` |
+| `category/mens-clothing.html` | `js/pages/products.js` with `data-gender="Male"` |
+| `category/womens-clothing.html` | `js/pages/products.js` with `data-gender="Female"` |
+| `product/index.html` | `js/pages/product.js`, reads `?id=` |
+| `cart-page/index.html` | `js/pages/cart.js` |
+| `checkout/index.html` | `js/pages/checkout.js` |
+| `checkout/confirmation/index.html` | `js/pages/confirmation.js`, reads `?order=` |
+| `terms/`, `privacy/`, `coming-soon/` | static, `js/main.js` only |
+
+## Filtering
+
+The products page keeps its filters in the query string, so a filtered view can be shared and
+survives a reload:
+
+```
+products/index.html?gender=Male&baseColor=Black&sort=discountedPrice&order=asc
+```
+
+Colour and product options are read from the API at startup rather than written into the markup.
+A category page sets `data-gender` on its grid; that preset is merged over the query string, so
+the category cannot be filtered away.
+
+## Known limitations
+
+- Orders are stored in memory by the API. Restarting the backend makes existing order ids
+  return 404.
+- The production API URL in `js/env.js` is a placeholder and must be updated before deploying.
+- The specification table and the star rating on the product page are static design elements.
+  The API carries no data for them.
