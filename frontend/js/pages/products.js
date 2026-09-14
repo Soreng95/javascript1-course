@@ -23,7 +23,7 @@ const render = (container, products) => {
 const load = async () => {
   const products = await withStatus(grid, () => getProducts(currentFilters()), {
     loadingMessage: 'Loading products',
-    onRetry: load,
+    onRetry: init,
   });
 
   if (!products) return;
@@ -52,11 +52,14 @@ const updateUrl = () => {
   load();
 };
 
-const fillOptions = (select, values) =>
+const fillOptions = (select, values) => {
+  select.length = 1;
   values.forEach((value) => select.append(el('option', { value, text: value })));
+};
 
 const init = async () => {
   const saved = currentFilters();
+  const filters = qs('[data-filters]');
 
   try {
     const [products, tags] = await Promise.all([getProducts(), getTags()]);
@@ -64,8 +67,9 @@ const init = async () => {
 
     fillOptions(qs('[data-filter="baseColor"]'), colours);
     fillOptions(qs('[data-filter="tag"]'), tags);
+    filters.hidden = false;
   } catch {
-    qs('[data-filters]').hidden = true;
+    filters.hidden = true;
   }
 
   qsa('[data-filter]').forEach((select) => {

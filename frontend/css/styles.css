@@ -2524,3 +2524,7 @@ PRODUCT GALLERY */
   font-size: 0.85rem;
   line-height: 1.6;
 }
+
+[hidden] {
+  display: none !important;
+}
