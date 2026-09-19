@@ -52,6 +52,15 @@ const updateUrl = () => {
   load();
 };
 
+const debounce = (callback, delay = 300) => {
+  let timer = null;
+
+  return () => {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(callback, delay);
+  };
+};
+
 const fillOptions = (select, values) => {
   select.length = 1;
   values.forEach((value) => select.append(el('option', { value, text: value })));
@@ -72,9 +81,16 @@ const init = async () => {
     filters.hidden = true;
   }
 
-  qsa('[data-filter]').forEach((select) => {
-    select.value = saved[select.dataset.filter] ?? '';
-    select.addEventListener('change', updateUrl);
+  const updateSoon = debounce(updateUrl);
+
+  qsa('[data-filter]').forEach((field) => {
+    field.value = saved[field.dataset.filter] ?? '';
+
+    if (field.tagName === 'INPUT') {
+      field.addEventListener('input', updateSoon);
+    } else {
+      field.addEventListener('change', updateUrl);
+    }
   });
 
   if (saved.sort) sortSelect.value = `${saved.sort}-${saved.order ?? 'asc'}`;

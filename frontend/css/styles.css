@@ -2487,6 +2487,25 @@ PRODUCT GALLERY */
   outline-offset: 2px;
 }
 
+.products-toolbar__input {
+  font: inherit;
+  color: var(--foreground);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--foreground);
+  padding: 0.2rem 0.25rem;
+  min-width: 12rem;
+}
+
+.products-toolbar__input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.products-toolbar__input:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
 .legal {
   padding: 3rem 0 4rem;
 }

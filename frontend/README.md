@@ -19,7 +19,7 @@ Swagger UI: http://localhost:8080/api/docs
 
 **2. Frontend** (port 5500)
 
-Use the VS Code *Live Server* extension, or:
+Use the VS Code _Live Server_ extension, or:
 
 ```
 python3 -m http.server 5500
@@ -75,7 +75,7 @@ Override it without editing code by loading any page with `?env=production` or `
 The choice is remembered in `localStorage`, so you only pass it once. From the console:
 
 ```js
-RainyDays.env.setEnvironment('production');
+RainyDays.env.setEnvironment("production");
 RainyDays.env.clearEnvironmentOverride();
 ```
 
@@ -106,10 +106,10 @@ console debugging and for scripts that are not modules.
 `js/api/endpoints.js`, never a hand-written URL.
 
 ```js
-import { ENDPOINTS, withQuery } from '../api/endpoints.js';
-import { get, post, put } from '../api/http.js';
+import { ENDPOINTS, withQuery } from "../api/endpoints.js";
+import { get, post, put } from "../api/http.js";
 
-await get(withQuery(ENDPOINTS.products.list(), { gender: 'Female' }));
+await get(withQuery(ENDPOINTS.products.list(), { gender: "Female" }));
 await post(ENDPOINTS.orders.create(), payload);
 await put(ENDPOINTS.products.detail(id), changes);
 ```
@@ -132,9 +132,9 @@ The backend currently has no `PUT` route, and its CORS allowlist is `GET, POST, 
 **Assertions** return the value or throw a `ValidationError` naming the field:
 
 ```js
-import { assertInteger } from '../lib/types.js';
+import { assertInteger } from "../lib/types.js";
 
-assertInteger(quantity, 'quantity');
+assertInteger(quantity, "quantity");
 ```
 
 **Fallbacks** never throw: `ensureString(value, '')`, `ensureNumber(value, 0)`, `ensureArray`,
@@ -144,7 +144,7 @@ assertInteger(quantity, 'quantity');
 (`products[0].image.url must be a string, received number`):
 
 ```js
-import { field, optional, shapeOf, validateShape } from '../lib/types.js';
+import { field, optional, shapeOf, validateShape } from "../lib/types.js";
 
 const SHAPE = {
   id: field.nonEmptyString,
@@ -153,7 +153,7 @@ const SHAPE = {
   note: optional(field.string),
 };
 
-validateShape(value, SHAPE, 'orderLine');
+validateShape(value, SHAPE, "orderLine");
 ```
 
 `js/api/schemas.js` applies this to every API response. If the server ever returns a product
@@ -166,16 +166,20 @@ of leaking bad data into the page.
 error with a retry button:
 
 ```js
-import { withStatus } from '../lib/status.js';
-import { getProducts } from '../api/products.js';
+import { withStatus } from "../lib/status.js";
+import { getProducts } from "../api/products.js";
 
-const grid = document.querySelector('[data-product-grid]');
+const grid = document.querySelector("[data-product-grid]");
 
 const load = async () => {
-  const products = await withStatus(grid, () => getProducts({ gender: 'Female' }), {
-    loadingMessage: 'Loading products',
-    onRetry: load,
-  });
+  const products = await withStatus(
+    grid,
+    () => getProducts({ gender: "Female" }),
+    {
+      loadingMessage: "Loading products",
+      onRetry: load,
+    },
+  );
 
   if (!products) return;
   render(grid, products);
@@ -187,9 +191,15 @@ load();
 ### Cart
 
 ```js
-import { addItem, getItems, getCount, subscribe, toOrderPayload } from '../store/cart.js';
+import {
+  addItem,
+  getItems,
+  getCount,
+  subscribe,
+  toOrderPayload,
+} from "../store/cart.js";
 
-addItem(product, { size: 'M', quantity: 2 });
+addItem(product, { size: "M", quantity: 2 });
 subscribe((items) => console.log(items.length));
 ```
 
@@ -200,16 +210,16 @@ open tabs. `toOrderPayload(email)` produces the exact body `POST /api/orders` ex
 
 Render targets are marked with data attributes so the markup and the JavaScript stay decoupled.
 
-| Page | Hook |
-| --- | --- |
-| `index.html` | `data-product-grid`, `data-featured-list`, `data-featured-carousel` |
-| `products/index.html` | `data-product-grid`, `data-favorites-grid`, `data-filters`, `data-filter`, `data-sort` |
-| `category/*.html` | the same, plus `data-gender` on the grid to lock the category |
-| `product/index.html` | `data-product-detail`, `data-product-image`, `data-sizes`, `data-add-to-cart`, `data-related-grid` |
-| `cart-page/index.html` | `data-cart-list`, `data-cart-totals`, `data-suggestions-grid` |
-| `checkout/index.html` | `data-checkout-form`, `data-checkout-list`, `data-checkout-totals`, `data-pay` |
-| `checkout/confirmation/index.html` | `data-order-id`, `data-order-shipping`, `data-order-total` |
-| every page | `data-cart-link` |
+| Page                               | Hook                                                                                               |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `index.html`                       | `data-product-grid`, `data-featured-list`, `data-featured-carousel`                                |
+| `products/index.html`              | `data-product-grid`, `data-favorites-grid`, `data-filters`, `data-filter`, `data-sort`             |
+| `category/*.html`                  | the same, plus `data-gender` on the grid to lock the category                                      |
+| `product/index.html`               | `data-product-detail`, `data-product-image`, `data-sizes`, `data-add-to-cart`, `data-related-grid` |
+| `cart-page/index.html`             | `data-cart-list`, `data-cart-totals`, `data-suggestions-grid`                                      |
+| `checkout/index.html`              | `data-checkout-form`, `data-checkout-list`, `data-checkout-totals`, `data-pay`                     |
+| `checkout/confirmation/index.html` | `data-order-id`, `data-order-shipping`, `data-order-total`                                         |
+| every page                         | `data-cart-link`                                                                                   |
 
 ## Adding a page module
 
@@ -220,17 +230,17 @@ Render targets are marked with data attributes so the markup and the JavaScript 
 
 ## Pages
 
-| Page | Module |
-| --- | --- |
-| `index.html` | `js/pages/home.js` |
-| `products/index.html` | `js/pages/products.js` |
-| `category/mens-clothing.html` | `js/pages/products.js` with `data-gender="Male"` |
-| `category/womens-clothing.html` | `js/pages/products.js` with `data-gender="Female"` |
-| `product/index.html` | `js/pages/product.js`, reads `?id=` |
-| `cart-page/index.html` | `js/pages/cart.js` |
-| `checkout/index.html` | `js/pages/checkout.js` |
-| `checkout/confirmation/index.html` | `js/pages/confirmation.js`, reads `?order=` |
-| `terms/`, `privacy/`, `coming-soon/` | static, `js/main.js` only |
+| Page                                 | Module                                             |
+| ------------------------------------ | -------------------------------------------------- |
+| `index.html`                         | `js/pages/home.js`                                 |
+| `products/index.html`                | `js/pages/products.js`                             |
+| `category/mens-clothing.html`        | `js/pages/products.js` with `data-gender="Male"`   |
+| `category/womens-clothing.html`      | `js/pages/products.js` with `data-gender="Female"` |
+| `product/index.html`                 | `js/pages/product.js`, reads `?id=`                |
+| `cart-page/index.html`               | `js/pages/cart.js`                                 |
+| `checkout/index.html`                | `js/pages/checkout.js`                             |
+| `checkout/confirmation/index.html`   | `js/pages/confirmation.js`, reads `?order=`        |
+| `terms/`, `privacy/`, `coming-soon/` | static, `js/main.js` only                          |
 
 ## Filtering
 
@@ -238,12 +248,32 @@ The products page keeps its filters in the query string, so a filtered view can 
 survives a reload:
 
 ```
-products/index.html?gender=Male&baseColor=Black&sort=discountedPrice&order=asc
+products/?gender=Male&baseColor=Black&sort=discountedPrice&order=asc
 ```
+
+The nav Search icon points at the products page, where a free-text `search` field sits beside the
+dropdowns. It is debounced and filters on title and description through the same query string.
 
 Colour and product options are read from the API at startup rather than written into the markup.
 A category page sets `data-gender` on its grid; that preset is merged over the query string, so
 the category cannot be filtered away.
+
+## Use of AI
+
+AI assistance was used in four places on this project:
+
+- **Terms & Conditions and Privacy Policy** — the body text on `terms/index.html` and
+  `privacy/index.html` was generated by an AI language model. Both pages carry a visible note
+  saying so. The course brief permits AI-generated content for these pages with citation.
+- **This README** — drafted with AI assistance, then reviewed and corrected against the code.
+- **`js/lib/dom.js`** — AI was used to explain how the DOM APIs fit together and to produce the
+  first version of the `el` element factory. The code was reviewed line by line before it was
+  kept.
+- **Backend** — the architecture is my own design. I specified the logic, the structure and the
+  schemas (matching the Noroff API docs), and AI wrote the implementation from that
+  specification.
+
+
 
 ## Known limitations
 
